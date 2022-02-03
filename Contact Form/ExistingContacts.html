@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ExistingContacts</title>
+        <!-- The line below links the style CSS document to the HTML form-->
+        <link rel = "stylesheet" href = "format.css">
+    </head>
+    <body>
+        <h2 allign = center>Existing Contacts</h2>
+        <form allign = center>
+            <!-- Script pulls the user information that is stored within the file and parses it so that each set of user data
+            can exist in its own block by savinfg the groups of information as pairs into an array -->
+            <script language = JavaScript>
+                function getParams(){
+                    var index = document.URL.indexOf('?');
+                    var paremeters = new Array();
+                    if(index != -1){
+                        var pairs = document.URL.substring(index + 1, document.URL.length).split('&');
+                        for(var i = 0; i < pairs.length; i++){
+                            info = pairs[i].split('=');
+                            parameters[info[0]] = info[1];
+                        }
+                    }
+                    return parameters;
+                }
+                parameters = getParams();
+                First_Name = unescape(parameters["First_Name"]);
+                Last_Name = unescape(parameters["Last_Name"]);
+                Address = unescape(parameters["Address"]);
+                State = unescape(parameters["State"]);
+                Zip = unescape(parameters["Zipcode"]);
+                Phone = unescape(parameters["Phone_Number"]);
+                Email = unescape(parameters["Email"]);
+                document.write("First Name: " + First_Name + "<br>");
+                document.write("Last Name: " + Last_Name + "<br>");
+                document.write("Address" + Address + "<br>");
+                document.write("State" + State + "<br>");
+                document.write("Zip: " + Zip + "<br>");
+                document.write("Phone #: " + Phone + "<br>");
+                document.write("Email: " + Email + "<br>");
+            </script>
+            <!-- The JavaScript code above pulls the parameters that have been listed for each data entry type and then writes them all
+            into the user information document with the proper formatting and spacing-->
+            <!-- This hyperlink sends the user back to the Contact Form page -->
+            <a href = "ContactForm.html">Return to the Main Page</a>
+        </form>
+    </body>
+</html>
